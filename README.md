@@ -120,7 +120,245 @@ Run the entire project with a single command.
 🛠️ Tech Stack
 Programming Language
 Python
-Backend
+Backend# 🤖 RAG-Based Document Q&A System with MLOps Pipeline
+
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+> **A production-grade, privacy-first Retrieval-Augmented Generation (RAG) platform that enables users to upload documents and interact with them through an intelligent AI-powered chat interface.**
+
+Built with **FastAPI**, **Streamlit**, **LangChain**, **ChromaDB**, **Ollama**, and **HuggingFace Embeddings**, following **IEEE 830 Software Requirements Specification (SRS)** principles.
+
+---
+
+# 📚 Table of Contents
+
+- Overview
+- Features
+- System Architecture
+- Tech Stack
+- Supported File Formats
+- Quick Start
+- Project Structure
+- Workflow
+- Key Highlights
+- License
+
+---
+
+# 📖 Overview
+
+This application allows users to upload PDF, DOCX, TXT, and Markdown documents and ask natural language questions about their contents.
+
+The entire Retrieval-Augmented Generation (RAG) pipeline runs **locally**, ensuring **complete privacy**, **low latency**, and **zero dependence on external AI APIs**.
+
+---
+
+# ✨ Features
+
+## 📄 Multi-Format Document Support
+
+- PDF
+- DOCX
+- TXT
+- Markdown
+- Automatic parsing and preprocessing
+
+## 🧠 Retrieval-Augmented Generation
+
+- Semantic document search
+- Intelligent chunking
+- Vector embeddings
+- Cosine similarity retrieval
+- Context-aware answer generation
+
+## 🚫 Hallucination Prevention
+
+- Answers only from retrieved context
+- No fabricated responses
+- Citation-backed answers
+- Graceful fallback when information is unavailable
+
+## 🔒 Privacy-First AI
+
+- ✅ No OpenAI API
+- ✅ No Gemini API
+- ✅ No Claude API
+- ✅ 100% Local Processing
+
+## 🔐 Enterprise Security
+
+- JWT Authentication
+- Bcrypt Password Hashing
+- Protected REST APIs
+- Secure User Authentication
+
+## 💬 Modern User Interface
+
+- Interactive Streamlit Chat
+- Chat History
+- Source Citations
+- Relevance Scores
+
+## 🐳 Dockerized Deployment
+
+- FastAPI Backend
+- Streamlit Frontend
+- ChromaDB
+- SQLite
+
+---
+
+# 🏗️ System Architecture
+
+```mermaid
+graph TD
+    A["🖥️ Streamlit Frontend"] -->|"REST API"| B["⚡ FastAPI Backend"]
+
+    B --> C["🔐 JWT Authentication<br/>Bcrypt"]
+    B --> D["📦 ChromaDB"]
+    B --> E["🤖 Ollama<br/>gemma2:2b"]
+    B --> F["🗄️ SQLite"]
+
+    D --> G["🧠 HuggingFace Embeddings<br/>all-MiniLM-L6-v2"]
+```
+
+---
+
+# 🛠️ Tech Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Language | Python |
+| Backend | FastAPI, LangChain, Pydantic |
+| Frontend | Streamlit |
+| AI/ML | Ollama, gemma2:2b, HuggingFace, all-MiniLM-L6-v2 |
+| Vector Database | ChromaDB |
+| Database | SQLite |
+| Authentication | JWT, Bcrypt |
+| DevOps | Docker, Docker Compose |
+
+---
+
+# 📂 Supported File Formats
+
+| Format | Supported |
+|--------|-----------|
+| PDF | ✅ |
+| DOCX | ✅ |
+| TXT | ✅ |
+| Markdown | ✅ |
+
+---
+
+# 🚀 Quick Start
+
+## Prerequisites
+
+- Docker Desktop
+- Docker Compose
+- Ollama
+
+Pull the model:
+
+```bash
+ollama run gemma2:2b
+```
+
+Clone the repository:
+
+```bash
+git clone https://github.com/srinikavuppala/rag-qa-mlops.git
+cd rag-qa-mlops
+```
+
+Run the project:
+
+```bash
+docker-compose up --build
+```
+
+### Access
+
+- **Frontend:** http://localhost:8501
+- **Backend:** http://localhost:8000
+- **Swagger Docs:** http://localhost:8000/docs
+
+---
+
+# 📁 Project Structure
+
+```text
+rag-qa-mlops/
+├── backend/
+│   ├── api/
+│   ├── auth/
+│   ├── database/
+│   ├── models/
+│   ├── services/
+│   ├── main.py
+│   └── requirements.txt
+├── frontend/
+│   ├── streamlit_app.py
+│   └── requirements.txt
+├── chroma_db/
+├── uploads/
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+└── requirements.txt
+```
+
+---
+
+# 🔄 Workflow
+
+```mermaid
+flowchart TD
+    A["📄 Upload Document"] --> B["Parse Document"]
+    B --> C["Split into Chunks"]
+    C --> D["Generate Embeddings"]
+    D --> E["Store in ChromaDB"]
+    F["❓User Question"] --> G["Generate Query Embedding"]
+    G --> H["Semantic Search"]
+    E --> H
+    H --> I["Retrieve Top-k Chunks"]
+    I --> J["Construct Prompt"]
+    J --> K["Ollama (gemma2:2b)"]
+    K --> L["💬 Citation-Based Response"]
+```
+
+---
+
+# 🎯 Key Highlights
+
+- ✅ Production-grade RAG implementation
+- ✅ Fully local AI inference
+- ✅ Privacy-first architecture
+- ✅ IEEE 830 SRS compliant design
+- ✅ Dockerized microservices
+- ✅ JWT authentication
+- ✅ Multi-format document ingestion
+- ✅ Semantic search using vector embeddings
+- ✅ Citation-backed responses
+- ✅ FastAPI REST APIs
+- ✅ Interactive Streamlit interface
+- ✅ Swagger API documentation
+
+---
+
+# 📜 License
+
+This project is intended for educational, research, and portfolio purposes.
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a **⭐ Star** on GitHub.
+
 FastAPI
 LangChain
 Pydantic
@@ -166,7 +404,6 @@ Docker Compose
 Ollama
 
 Pull the LLM model:
-
 ollama run gemma2:2b
 
 Clone the Repository
@@ -176,7 +413,6 @@ git clone https://github.com/srinikavuppala/rag-qa-mlops.git
 cd rag-qa-mlops
 
 Build and Run
-
 docker-compose up --build
 Access the Application
 Streamlit Frontend
@@ -186,32 +422,35 @@ http://localhost:8000
 Swagger API Documentation
 http://localhost:8000/docs
 
-📁 Project Structure
+## 📁 Project Structure
 
+```text
 rag-qa-mlops/
-│
 ├── backend/
 │   ├── api/
 │   ├── auth/
-│   ├── services/
 │   ├── database/
 │   ├── models/
-│   └── main.py
+│   ├── services/
+│   ├── utils/
+│   ├── main.py
+│   └── requirements.txt
 │
 ├── frontend/
-│   └── streamlit_app.py
+│   ├── pages/
+│   ├── components/
+│   ├── streamlit_app.py
+│   └── requirements.txt
 │
 ├── chroma_db/
-│
 ├── uploads/
-│
-├── docker-compose.yml
-│
 ├── Dockerfile
-│
-├── requirements.txt
-│
-└── README.md
+├── docker-compose.yml
+├── .env
+├── .gitignore
+├── README.md
+└── LICENSE
+```
 
 ## 🔄 Workflow
 
@@ -249,20 +488,20 @@ Ollama (gemma2:2b)
 Citation-Based Response
 ```
 
-🎯 Key Highlights
+## 🎯 Key Highlights
 
-✅ Production-grade RAG implementation
-✅ Fully local AI inference
-✅ Privacy-first architecture
-✅ IEEE 830 SRS compliant design
-✅ Dockerized microservices
-✅ JWT authentication
-✅ Multi-format document ingestion
-✅ Semantic search using vector embeddings
-✅ Citation-backed responses
-✅ FastAPI REST APIs
-✅ Interactive Streamlit interface
-✅ Swagger API documentation
+- ✅ Production-grade RAG implementation
+- ✅ Fully local AI inference
+- ✅ Privacy-first architecture
+- ✅ IEEE 830 SRS compliant design
+- ✅ Dockerized microservices
+- ✅ JWT authentication
+- ✅ Multi-format document ingestion
+- ✅ Semantic search using vector embeddings
+- ✅ Citation-backed responses
+- ✅ FastAPI REST APIs
+- ✅ Interactive Streamlit interface
+- ✅ Swagger API documentation
 
 📜 License
 
