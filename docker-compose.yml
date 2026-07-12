@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Tells the backend to look for Ollama on your Windows host machine
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - JWT_SECRET=super-secret-docker-jwt-key-change-in-production
+    volumes:
+      # Persists the vector database and user database even if containers are deleted
+      - ./data:/app/data
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    environment:
+      # Tells the Streamlit UI where to find the backend API
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
