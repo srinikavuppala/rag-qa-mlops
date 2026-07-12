@@ -90,7 +90,9 @@ SQLite Database
 
 Run the entire project with a single command.
 
-🏗️ System Architecture
+## 🏗️ System Architecture
+
+```text
                         ┌─────────────────────────┐
                         │     Streamlit UI        │
                         │      (Frontend)         │
@@ -106,14 +108,15 @@ Run the entire project with a single command.
           ┌────────────────────────┼────────────────────────┐
           │                        │                        │
           ▼                        ▼                        ▼
-   Authentication          Chroma Vector DB          Ollama LLM
-     JWT + Bcrypt           Semantic Search          gemma2:2b
+ Authentication            Chroma Vector DB          Ollama LLM
+ JWT + Bcrypt              Semantic Search            gemma2:2b
           │                        │                        │
           └───────────────┬────────┴───────────────┬────────┘
                           ▼                        ▼
-               HuggingFace Embeddings      SQLite Database
+             HuggingFace Embeddings        SQLite Database
                 all-MiniLM-L6-v2
-                
+```
+
 🛠️ Tech Stack
 Programming Language
 Python
@@ -210,39 +213,41 @@ rag-qa-mlops/
 │
 └── README.md
 
-🔄 Workflow
+## 🔄 Workflow
 
+```text
 User Uploads Document
-          │
-          ▼
+        │
+        ▼
 Document Parsing
-          │
-          ▼
+        │
+        ▼
 Text Chunking
-          │
-          ▼
+        │
+        ▼
 Embedding Generation
-          │
-          ▼
+        │
+        ▼
 Store Embeddings in ChromaDB
-          │
-          ▼
+        │
+        ▼
 User Asks Question
-          │
-          ▼
+        │
+        ▼
 Semantic Retrieval
-          │
-          ▼
+        │
+        ▼
 Relevant Context Retrieved
-          │
-          ▼
+        │
+        ▼
 Prompt Construction
-          │
-          ▼
+        │
+        ▼
 Ollama (gemma2:2b)
-          │
-          ▼
+        │
+        ▼
 Citation-Based Response
+```
 
 🎯 Key Highlights
 
